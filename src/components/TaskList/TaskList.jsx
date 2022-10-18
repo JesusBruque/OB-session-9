@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import TaskComponent from '../Task/Task.jsx';
-import { Task } from "../../models/task.class";
+import TaskComponent from '../Task/TaskComponent.jsx';
+import { Task } from "../../models/task.class.js";
 
 import "./taskList.css";
 
@@ -10,10 +10,10 @@ const TaskList = () => {
     const defaultTask2 = new Task('Alba', 'Molina', 'aMolina', false);
     const defaultTask3 = new Task('Sergio', 'Bruque', 'sergi1', true);
 
-    const [tasks, setTasks] = useState(defaultTask1, defaultTask2, defaultTask3);
+    const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
 
     useEffect(() => {
-    }, [tasks]);
+    }, []);
 
     return (
         <div className="card">
@@ -31,14 +31,15 @@ const TaskList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tasks.map = (task, index) => {
+                        {tasks.map((task, index) => {
                             return (
                                 <TaskComponent 
                                     key={index}
                                     task={task}
-                                />
+                                ></TaskComponent>
                             )
-                        }}
+                            
+                        })}
                         {/* <TaskComponent task={defaultTask1}></TaskComponent> */}
                         
                     </tbody>
@@ -47,5 +48,7 @@ const TaskList = () => {
         </div>
     );
 }
+
+
 
 export default TaskList;

@@ -8,6 +8,6 @@ export class Task {
         this.name = name;
         this.lastName = lastName;
         this.userName = userName;
-        this.conected = conected
+        this.conected = conected;
     }
 }

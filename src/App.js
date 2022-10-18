@@ -1,11 +1,11 @@
 import './App.css';
 
-import TaskList from './components/TaskList/TaskList';
+import TaskList from './components/TaskList/TaskList.jsx';
 
-function App() {
+const App = () => {
   return (
-    <TaskList />
-  );
-}
+    <TaskList></TaskList>
+  )
+};
 
 export default App;
