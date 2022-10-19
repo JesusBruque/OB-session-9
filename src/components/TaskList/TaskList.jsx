@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
+
+//Import Components
 import TaskComponent from '../Task/TaskComponent.jsx';
+import TaskForm from '../TaskForm/TaskForm.jsx';
+
+//Import Class
 import { Task } from "../../models/task.class.js";
 
+//Import Styles
 import "./taskList.css";
 
 const TaskList = () => {
@@ -12,8 +18,32 @@ const TaskList = () => {
 
     const [tasks, setTasks] = useState([defaultTask1, defaultTask2, defaultTask3]);
 
+    const completeTask = (task) => {
+        console.log("Complete this task", task);
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask[index].conected = !tempTask[index].conected;
+        setTasks(tempTask);
+    }
+
+    const deleteContact = (task) => {
+        console.log("Contact delete", task);
+        const index = tasks.indexOf(task);
+        const tempTask = [...tasks];
+        tempTask.splice(index, 1);
+        setTasks(tempTask);
+
+    }
+
+    const addTask = (task) => {
+        console.log("Contact add", task);
+        const tempTask = [...tasks];
+        tempTask.push(task);
+        setTasks(tempTask);
+    }
+
     useEffect(() => {
-    }, []);
+    }, [tasks]);
 
     return (
         <div className="card">
@@ -36,15 +66,16 @@ const TaskList = () => {
                                 <TaskComponent 
                                     key={index}
                                     task={task}
-                                ></TaskComponent>
+                                    complete={completeTask}
+                                    remove={deleteContact}  
+                                />
                             )
                             
                         })}
-                        {/* <TaskComponent task={defaultTask1}></TaskComponent> */}
-                        
                     </tbody>
                 </table>
             </div>
+            <TaskForm add={addTask}/>
         </div>
     );
 }

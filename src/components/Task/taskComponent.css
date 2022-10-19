@@ -1,0 +1,16 @@
+.bi-toggle2-on {
+    color: green;
+}
+
+.bi-toggle2-off {
+    color: red;
+}
+
+.bi-trash3 {
+    margin-left: 10px;
+    color: grey;
+}
+
+.task-action {
+    cursor: pointer;
+}
